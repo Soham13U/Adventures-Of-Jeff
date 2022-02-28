@@ -5,7 +5,9 @@ using UnityEngine;
 public enum PlayerState{
     walk,
     attack,
-    interact
+    interact,
+    stagger,
+    idle
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -13,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidBody;
     private Vector3 change;
     private Animator animator;
-    private PlayerState currentState;
+    public PlayerState currentState;
     // Start is called before the first frame update
     void Start()
     {   
@@ -30,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal"); //we use GetAxisRaw to directly change the value, (no acceleration). If we used GetAxis then the character would accelerate while moving
         change.y = Input.GetAxisRaw("Vertical");
-        if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack)
+        if(Input.GetButtonDown("Attack") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
         {
             StartCoroutine(AttackCo());
         }
-        else if (currentState == PlayerState.walk){
+        else if (currentState == PlayerState.walk || currentState== PlayerState.idle){
 
         
         UpdateAnimation();
@@ -75,6 +77,21 @@ public class PlayerMovement : MonoBehaviour
        // myRigidBody.MovePosition(transform.position + change*Speed() *Time.deltaTime);
        myRigidBody.velocity = new Vector2(change.x*Speed(),change.y*Speed());
        
+    }
+    public void Knock(float knockTime)
+    {
+        StartCoroutine(KnockCo(knockTime));
+    }
+    private IEnumerator KnockCo(float knockTime)
+    {
+        if( myRigidBody != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            myRigidBody.velocity = Vector2.zero;
+           currentState = PlayerState.idle;
+           myRigidBody.velocity = Vector2.zero;
+            
+        }
     }
 
     float Speed()

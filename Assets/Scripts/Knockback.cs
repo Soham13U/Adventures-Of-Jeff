@@ -6,6 +6,7 @@ public class Knockback : MonoBehaviour
 {
     public float thrust;
     public float knockTime;
+    public float damage;
 
      void Start()
     {
@@ -19,32 +20,49 @@ public class Knockback : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("enemy"))
+    {   
+
+        if (other.gameObject.CompareTag("enemy") && other.isTrigger)
         {
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
-            if(enemy != null)
-            {
-                enemy.isKinematic = false;
-                Debug.Log("1");
-                Vector2 difference = enemy.transform.position - transform.position;
-                  Debug.Log("2");
+            Rigidbody2D hit = other.GetComponent<Rigidbody2D>();
+            if(hit != null)
+            {   
+                Vector2 difference = hit.transform.position - transform.position;
                 difference = difference.normalized * thrust;
-                Debug.Log("3");
-                enemy.AddForce(difference, ForceMode2D.Impulse);
-                  Debug.Log("4");
-                StartCoroutine(KnockCo(enemy));
-                 Debug.Log("5");
+                hit.AddForce(difference, ForceMode2D.Impulse);
+                
+                
+                    hit.GetComponent<Enemy>().currentState = EnemyState.stagger;
+                    other.GetComponent<Enemy>().Knock(hit,knockTime,damage);
+                
+               
+                
+                
+               
             }
         }
-    } 
-    private IEnumerator KnockCo(Rigidbody2D enemy)
-    {
-        if( enemy != null)
+          if (other.gameObject.CompareTag("Player"))
         {
-            yield return new WaitForSeconds(knockTime);
-            enemy.velocity = Vector2.zero;
-            enemy.isKinematic = true;
+            Rigidbody2D hit = other.GetComponent<Rigidbody2D>();
+            if(hit != null)
+            {   
+                Vector2 difference = hit.transform.position - transform.position;
+                difference = difference.normalized * thrust;
+                hit.AddForce(difference, ForceMode2D.Impulse);
+                
+               
+               
+                    hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
+                    other.GetComponent<PlayerMovement>().Knock(knockTime);
+                
+                
+                
+               
+            }
         }
-    }
+        
+
+       
+    } 
+  
 }
