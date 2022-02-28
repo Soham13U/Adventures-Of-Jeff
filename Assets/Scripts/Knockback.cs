@@ -51,15 +51,16 @@ public class Knockback : MonoBehaviour
                 hit.AddForce(difference, ForceMode2D.Impulse);
                 
                
-               
-                    hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
-                    other.GetComponent<PlayerMovement>().Knock(knockTime);
-                
+                    if(other.GetComponent<PlayerMovement>().currentState != PlayerState.stagger)
+                 {   hit.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
+                    other.GetComponent<PlayerMovement>().Knock(knockTime,damage);
+                 }
                 
                 
                
             }
         }
+        
         
 
        

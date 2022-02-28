@@ -46,6 +46,9 @@
      <Compile Include="Assets\Scripts\Log.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\FloatValue.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\SignalSender.cs" />
+     <Compile Include="Assets\Scripts\SignalListener.cs" />
+     <Compile Include="Assets\Scripts\HeartManager.cs" />
      <None Include="Assets\Scripts\temp.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
