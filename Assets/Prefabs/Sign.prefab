@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4496199564602178857}
   - component: {fileID: 3780615219118012200}
   - component: {fileID: 5489291724112839844}
+  - component: {fileID: 308655351}
   m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1984317935
+  m_SortingLayerID: -981952383
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4479181887894498110, guid: 70fbc41974df4014b8651182863fbd82, type: 3}
@@ -136,3 +137,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.715806}
   m_EdgeRadius: 0
+--- !u!114 &308655351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7655959256305888160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6928d20204626442b1da237e96e498c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBox: {fileID: 0}
+  dialogText: {fileID: 0}
+  dialog: Lake ahead
+  inRange: 0
+  contextOn: {fileID: 11400000, guid: 0d0dd6ceb3596634399f52e9b1ddda8b, type: 2}
+  contextOff: {fileID: 11400000, guid: 28f5a1b03587dde4d8789921352642a8, type: 2}

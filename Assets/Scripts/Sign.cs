@@ -9,6 +9,8 @@ public class Sign : MonoBehaviour
    public Text dialogText;
    public string dialog;
    public bool inRange;
+   public SignalSender contextOn;
+   public SignalSender contextOff;
     void Start()
     {
         
@@ -33,7 +35,9 @@ public class Sign : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+               
                 inRange = true;
+                 contextOn.Raise();
         }
     }
 
@@ -41,6 +45,7 @@ public class Sign : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+                contextOff.Raise();
                 inRange = false;
                 dialogBox.SetActive(false);
         }

@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public PlayerState currentState;
     public FloatValue currentHealth;
+    public VectorValue startingPosition;
 
     public SignalSender playerHealthSignal;
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.walk;
         animator.SetFloat("moveX",0);
         animator.SetFloat("moveY",-1);
+        transform.position = startingPosition.initialValue;
     }
 
     // Update is called once per frame
