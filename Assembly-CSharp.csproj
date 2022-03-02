@@ -36,22 +36,23 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\RoomMove.cs" />
      <Compile Include="Assets\Scripts\Sign.cs" />
      <Compile Include="Assets\Scripts\PlayerHit.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\SignalListener.cs" />
      <Compile Include="Assets\Scripts\Pot.cs" />
+     <Compile Include="Assets\Scripts\ContextClue.cs" />
      <Compile Include="Assets\Scripts\Knockback.cs" />
      <Compile Include="Assets\Scripts\HeartManager.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\VectorValue.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\Log.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\SignalSender.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\FloatValue.cs" />
-     <Compile Include="Assets\Scripts\SceneTransition.cs" />
-     <Compile Include="Assets\Scripts\ScriptableObjects\VectorValue.cs" />
-     <Compile Include="Assets\Scripts\ContextClue.cs" />
+     <Compile Include="Assets\Scripts\Interactable.cs" />
      <None Include="Assets\Scripts\temp.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.2.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
